@@ -12,10 +12,17 @@ var pidgyCalculator = function() {
         init = function(transferCtrl, evolvedCtrl) {
             outTransfer = transferCtrl,
             outEvolve = evolvedCtrl,
-            evolvedCnt = 0,
-            evolutionCost = 12,
-            transferCnt = 0;
+            evolutionCost = 12;
+            reset();
         },
+
+        reset = function() {
+            pokemon = 0;
+            candy = 0;
+            transferBonus = 0;
+            transferCnt = 0;
+            evolvedCnt = 0;
+        }
 
         calculate = function(pokemonCnt, candyCnt, transferAfter) {
             pokemon = pokemonCnt;
@@ -56,6 +63,7 @@ var pidgyCalculator = function() {
         setOutput = function() {
             outTransfer.innerHTML = "First transfer " + transferCnt + " pidgies.";
             outEvolve.innerHTML = "Then, evolve " + evolvedCnt + " pidgies.";
+            reset();
         };
 
         return {
