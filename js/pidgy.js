@@ -31,7 +31,7 @@ var pidgyCalculator = function() {
                 if (candy >= evolutionCost) {
                     evolve();
                 } else if (candy + pokemon > evolutionCost) {
-                    trasnfer();
+                    transfer();
                 } else {
                     break;
                 }
