@@ -14,6 +14,7 @@ body {
     margin: 0;
     background-color: #eee;
     text-align: center;
+    letter-spacing: 5px;
 }
 
 header {
@@ -42,7 +43,7 @@ header > h1 {
     padding: 0;
     margin: 0;
     font-size: 3em;
-    letter-spacing: 3px;
+    letter-spacing: 10px;
     color: #FEC90B;
     text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
     font-family: 'PokemonFont';
@@ -59,7 +60,7 @@ input[type='number'] {
     outline: none;
     box-shadow: none;
     border: none;
-
+    letter-spacing: 5px;
 }
 
 label {
