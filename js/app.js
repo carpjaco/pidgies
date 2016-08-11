@@ -1,17 +1,16 @@
 window.onload = function () {
-    // Get document elements
-    var outTransfer = document.getElementById('outTransfer');
-    var outEvolve = document.getElementById('outEvolve');
-
+    var outputElement = document.getElementById('pidgyOutput');
     // Initialize calculator
-    pidgyCalculator.init(outTransfer, outEvolve);
+    pidgyCalculator.init(outputElement);
 
     // pokeball click event
     document.getElementById('btnCalc')
         .addEventListener('click', function(event) {
             event.preventDefault();
-            var pidgies = document.getElementById('txtPidgies').value;
-            var candies = document.getElementById('txtCandies').value;
+            var pidgies = document.getElementById('txtPidgies').value,
+                candies = document.getElementById('txtCandies').value;
+
+            clearUlChildren(outputElement);
             // Call calculator - forcing true for transfering pidgeotto
             pidgyCalculator.calculate(pidgies, candies, true); 
 
@@ -26,4 +25,11 @@ function setSpinTimer(element) {
     setTimeout(function() {
         element.className = "";    
     }, 1000);
+}
+
+// Clear a UL list of all children
+function clearUlChildren(element) {
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
 }

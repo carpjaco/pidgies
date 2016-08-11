@@ -67,6 +67,11 @@ label {
     font-size: 2em;
 }
 
+ul {
+    font-size: 2em;
+    list-style: none;
+}
+
 .input-container {
     display: inline-block;
     width: 300px;
@@ -80,19 +85,15 @@ label {
     margin: 10px auto;
 }
 
-#output {
-    font-size: 2em;
-}
-
 #git-link {
     width: 64px;
     height: 64px;
 }
 
 .spin-image {
-    -webkit-animation: spin 0.5s linear;
-       -moz-animation: spin 0.5s linear;
-            animation: spin 0.5s linear;
+    -webkit-animation: spin 0.25s linear;
+       -moz-animation: spin 0.25s linear;
+            animation: spin 0.25s linear;
 }
 
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }

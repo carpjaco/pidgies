@@ -6,14 +6,10 @@ var pidgyCalculator = function() {
         transferCnt,
         evolvedCnt,
         evolutionCost,
-        outTransfer,
-        outEvolve,
 
-        init = function(transferCtrl, evolvedCtrl) {
-            outTransfer = transferCtrl,
-            outEvolve = evolvedCtrl,
-            evolutionCost = 12;
-            reset();
+        init = function(element) {
+            outputCtrl = element,
+            evolutionCost = 12; // constant
         },
 
         reset = function() {
@@ -25,6 +21,7 @@ var pidgyCalculator = function() {
         }
 
         calculate = function(pokemonCnt, candyCnt, transferAfter) {
+            reset();
             pokemon = pokemonCnt;
             candy = candyCnt;
             transferBonus = transferAfter | 0; // cast bool as 0 or 1
@@ -61,9 +58,35 @@ var pidgyCalculator = function() {
         },
 
         setOutput = function() {
-            outTransfer.innerHTML = "First transfer " + transferCnt + " pidgies.";
-            outEvolve.innerHTML = "Then, evolve " + evolvedCnt + " pidgies.";
-            reset();
+            // display pidgies to transfer before starting if any
+            var txtOutput = "Before using your lucky egg, transfer ";
+            if (transferCnt > 0) {
+                txtOutput += transferCnt + (transferCnt > 1 ? " pidgies." : " pidgy.");
+                outputCtrl.appendChild(createLi(txtOutput));
+            }
+
+            // display number of pidgies to evolve
+            if (evolvedCnt < 1) {
+                txtOutput = "No pidgies can be evolved.";
+            } else {
+                txtOutput = "Evolve " + evolvedCnt + (evolvedCnt > 1 ? " pidgies." : " pidgy.");
+                outputCtrl.appendChild(createLi(txtOutput));
+            }
+
+            // display remaining candies if any
+            var remaining = Number(candy) + Number(pokemon);
+            if (remaining >= 1) {
+                txtOutput = "You will have " + 
+                    remaining + 
+                    (remaining > 1 ? " candies left." : " candy left.");
+                outputCtrl.appendChild(createLi(txtOutput));
+            } 
+        },
+
+        createLi = function(text) {
+            var li = document.createElement('li');
+            li.appendChild(document.createTextNode(text));
+            return li;
         };
 
         return {
