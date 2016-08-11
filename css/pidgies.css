@@ -1,25 +1,41 @@
 @font-face {
     font-family: 'PokemonFont';
     src: url('../font/pokemon-solid.ttf');
-
 }
 
 * {
     font-family: 'Indie Flower', cursive;
 }
+
 body {
-    background-color: #eee;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
     margin: 0;
-    padding: 0;
+    background-color: #eee;
+    text-align: center;
 }
 
 header {
     margin: 0;
     height: 150px;
     background-color: #3667A9;
-    text-align: center;
-    padding: 30px;
+    padding: 30px auto 30px auto;
     border-bottom: 1px solid #222;
+}
+
+section.main-content {
+    flex: 1;
+    padding: 50px;
+}
+
+footer {
+    margin: 25px 0 0 0;
+    padding: 25px;
+    height: 100px;
+    border-top: 1px solid #222;
+    font-size: 0.75em;
+    background-color: #FEC90B;
 }
 
 header > h1 {
@@ -30,19 +46,6 @@ header > h1 {
     color: #FEC90B;
     text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
     font-family: 'PokemonFont';
-}
-
-footer {
-    border-top: 1px solid #222;
-    text-align: center;
-    font-size: 0.75em;
-    background-color: #FEC90B;
-    height: 150px;
-}
-
-.main-content {
-    padding: 50px;
-    text-align: center;
 }
 
 input[type='number'] {
@@ -66,7 +69,7 @@ label {
 
 .input-container {
     display: inline-block;
-    width: 150px;
+    width: 300px;
     text-align: center;
 }
 
@@ -80,3 +83,18 @@ label {
 #output {
     font-size: 2em;
 }
+
+#git-link {
+    width: 64px;
+    height: 64px;
+}
+
+.spin-image {
+    -webkit-animation: spin 0.5s linear;
+       -moz-animation: spin 0.5s linear;
+            animation: spin 0.5s linear;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

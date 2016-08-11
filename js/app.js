@@ -8,5 +8,7 @@ window.onload = function () {
         var pidgies = document.getElementById('txtPidgies').value;
         var candies = document.getElementById('txtCandies').value;
         pidgyCalculator.calculate(pidgies, candies, true); //temp force 'true'
+
+        this.className = "spin-image";
     });
 }
