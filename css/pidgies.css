@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'PokemonFont';
+    src: url('../font/pokemon-solid.ttf');
+
+}
+
+* {
+    font-family: 'Indie Flower', cursive;
+}
+body {
+    background-color: #eee;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin: 0;
+    height: 150px;
+    background-color: #3667A9;
+    text-align: center;
+    padding: 30px;
+    border-bottom: 1px solid #222;
+}
+
+header > h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 3em;
+    letter-spacing: 3px;
+    color: #FEC90B;
+    text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+    font-family: 'PokemonFont';
+}
+
+footer {
+    border-top: 1px solid #222;
+    text-align: center;
+    font-size: 0.75em;
+    background-color: #FEC90B;
+    height: 150px;
+}
+
+.main-content {
+    padding: 50px;
+    text-align: center;
+}
+
+input[type='number'] {
+    width: 100px;
+    height: 60px;
+    font-size: 3em;
+    padding: 2px;
+    text-align: center;
+    background: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border: none;
+
+}
+
+label {
+    display: block;
+    font-size: 2em;
+}
+
+.input-container {
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+
+#btnCalc {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 10px auto;
+}
+
+#output {
+    font-size: 2em;
+}

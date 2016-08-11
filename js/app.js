@@ -3,7 +3,8 @@ window.onload = function () {
     var outEvolve = document.getElementById('outEvolve');
     pidgyCalculator.init(outTransfer, outEvolve);
 
-    document.getElementById('btnCalc').addEventListener('click', function() {
+    document.getElementById('btnCalc').addEventListener('click', function(event) {
+        event.preventDefault();
         var pidgies = document.getElementById('txtPidgies').value;
         var candies = document.getElementById('txtCandies').value;
         pidgyCalculator.calculate(pidgies, candies, true); //temp force 'true'
