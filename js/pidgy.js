@@ -22,25 +22,22 @@ var pidgyCalculator = function() {
 
         calculate = function(pokemonCnt, candyCnt, transferAfter) {
             reset();
-            pokemon = pokemonCnt;
-            candy = candyCnt;
+            pokemon = Number(pokemonCnt);
+            candy = Number(candyCnt);
             transferBonus = transferAfter | 0; // cast bool as 0 or 1
 
-            while (true) {
-                if (pokemon >= 1) {
-                    if (candy >= evolutionCost) {
-                        evolve();
-                    } else if (candy + pokemon > evolutionCost) {
-                        transfer();
-                        evolve();
-                    } else {
-                        transferCnt = pokemon;
-                        break;
-                    }
+            while (pokemon >= 1)
+            {
+                if (candy >= evolutionCost) {
+                    evolve();
+                } else if (candy + pokemon > evolutionCost) {
+                    trasnfer();
                 } else {
                     break;
                 }
             }
+
+            transferCnt = pokemon;
             setOutput();
         },
 
@@ -70,8 +67,8 @@ var pidgyCalculator = function() {
                 txtOutput = "No pidgies can be evolved.";
             } else {
                 txtOutput = "Evolve " + evolvedCnt + (evolvedCnt > 1 ? " pidgies." : " pidgy.");
-                outputCtrl.appendChild(createLi(txtOutput));
             }
+            outputCtrl.appendChild(createLi(txtOutput));
 
             // display remaining candies if any
             var remaining = Number(candy) + Number(pokemon);
