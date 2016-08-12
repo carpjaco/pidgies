@@ -32,10 +32,11 @@ main {
 footer {
     margin: 25px 0 0 0;
     padding: 25px;
-    height: 100px;
+    height: 160px;
     border-top: 1px solid #222;
     font-size: 0.75rem;
     background-color: #FEC90B;
+    box-sizing: border-box;
 }
 
 header > h1 {
@@ -51,10 +52,20 @@ header > h1 {
                  -3px -3px 0 #033476;
 }
 
+h1 > a {
+    text-decoration: none;
+    color: inherit;
+    letter-spacing: inherit;
+    margin: inherit;
+    padding: inherit;
+    line-height: inherit;
+    font-family: inherit;
+}
+
 input[type='number'] {
-    width: 100px;
+    width: 125px;
     height: 60px;
-    font-size: 3rem;
+    font-size: 4rem;
     padding: 2px;
     text-align: center;
     background: transparent;
@@ -67,7 +78,7 @@ input[type='number'] {
 
 label {
     display: block;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 ul {
@@ -75,9 +86,17 @@ ul {
     list-style: none;
 }
 
+
 .input-container {
     display: inline-block;
-    width: 300px;
+    width: 400px;
+    text-align: center;
+}
+
+footer a {
+    color: #033476;
+    font-size: 1.5em;
+    text-decoration: none;
     text-align: center;
 }
 
@@ -88,9 +107,15 @@ ul {
     margin: 10px auto;
 }
 
+#pidgyOutput {
+    text-align: left;
+    width: 800px;
+}
+
 #git-link {
     width: 64px;
     height: 64px;
+    margin: 0 auto 0 auto;
 }
 
 .spin-image {
@@ -102,3 +127,21 @@ ul {
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+p {
+    text-align: justify;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    letter-spacing: 1px;
+    max-width: 600px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+p.faq {
+    font-weight: bold;
+}
+
+p.faq-answer {
+ padding-left: 20px;
+}
