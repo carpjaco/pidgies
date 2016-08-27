@@ -18,7 +18,7 @@ var pidgyCalculator = function() {
             transferBonus = 0;
             transferCnt = 0;
             evolvedCnt = 0;
-        }
+        },
 
         calculate = function(pokemonCnt, candyCnt, transferAfter) {
             reset();
@@ -33,11 +33,10 @@ var pidgyCalculator = function() {
                 } else if (candy + pokemon > evolutionCost) {
                     transfer();
                 } else {
+                    transferCnt += pokemon;
                     break;
                 }
             }
-
-            transferCnt = pokemon;
             setOutput();
         },
 
@@ -51,6 +50,7 @@ var pidgyCalculator = function() {
 
         transfer = function() {
             pokemon--;
+            transferCnt++;
             candy++;
         },
 
