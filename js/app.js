@@ -82,6 +82,7 @@ function setOutput(outputCtrl) {
     } 
 }
 
+// Create Li element with the given text
 function createLi(text) {
     var li = document.createElement('li');
     li.appendChild(document.createTextNode(text));
