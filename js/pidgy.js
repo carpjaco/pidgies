@@ -34,7 +34,8 @@ var pidgyCalculator = function() {
                     transfer();
                 } else {
                     transferCnt += pokemon;
-                    break;
+                    candy += pokemon;
+                    pokemon = 0;
                 }
             }
             setOutput();
