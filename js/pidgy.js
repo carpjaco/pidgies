@@ -1,16 +1,10 @@
 var pidgyCalculator = function() {
-    var outputCtrl,
-        pokemon,
+    var pokemon,
         candy,
         transferBonus,
         transferCnt,
         evolvedCnt,
-        evolutionCost,
-
-        init = function(element) {
-            outputCtrl = element,
-            evolutionCost = 12; // constant
-        },
+        evolutionCost = 12, // constant
 
         reset = function() {
             pokemon = 0;
@@ -38,14 +32,13 @@ var pidgyCalculator = function() {
                     pokemon = 0;
                 }
             }
-            setOutput();
         },
 
         evolve = function() {
             pokemon--;
             // cost 12 for candy, but get 1 candy on evolve, 
             // plus bonus if transferred
-            candy -= 11 - transferBonus;
+            candy -= evolutionCost - 1 - transferBonus;
             evolvedCnt++;
         },
 
@@ -55,42 +48,14 @@ var pidgyCalculator = function() {
             candy++;
         },
 
-        setOutput = function() {
-            // display pidgies to transfer before starting if any
-            var txtOutput = "Before starting, transfer ";
-            if (transferCnt > 0) {
-                txtOutput += transferCnt + (transferCnt > 1 ? " pidgies." : " pidgy.");
-                outputCtrl.appendChild(createLi(txtOutput));
-            }
-
-            // display number of pidgies to evolve
-            if (evolvedCnt < 1) {
-                txtOutput = "No pidgies can be evolved.";
-            } else {
-                txtOutput = "Evolve " + 
-                    (transferBonus > 0 ? "and transfer " : "") + 
-                    evolvedCnt + (evolvedCnt > 1 ? " pidgies." : " pidgy.");
-            }
-            outputCtrl.appendChild(createLi(txtOutput));
-
-            // display remaining candies if any
-            var remaining = Number(candy) + Number(pokemon);
-            if (remaining >= 1) {
-                txtOutput = "You will have " + 
-                    remaining + 
-                    (remaining > 1 ? " candies left." : " candy left.");
-                outputCtrl.appendChild(createLi(txtOutput));
-            } 
-        },
-
-        createLi = function(text) {
-            var li = document.createElement('li');
-            li.appendChild(document.createTextNode(text));
-            return li;
-        };
+        getTransferFirst = function() { return transferCnt; },
+        getEvolved = function() { return evolvedCnt; },
+        getCandyLeft = function() { return candy; };
 
         return {
-            init: init,
-            calculate: calculate
+            calculate: calculate,
+            getTransferFirst: getTransferFirst,
+            getEvolved: getEvolved,
+            getCandyLeft: getCandyLeft
         };
 }();

@@ -1,9 +1,7 @@
 window.onload = function () {
     var outputElement = document.getElementById('pidgyOutput');
-    // Initialize calculator
-    pidgyCalculator.init(outputElement);
 
-    // pokeball click event
+    // Create event listener pokeball click
     document.getElementById('btnCalc')
         .addEventListener('click', function(event) {
             event.preventDefault();
@@ -17,6 +15,7 @@ window.onload = function () {
 
             // Call timer to make the ball spin
             setSpinTimer(this);
+            setOutput(outputElement);
         });
 
     // Clear text in input boxes when clicked on
@@ -48,4 +47,43 @@ function clearUlChildren(element) {
     while (element.firstChild) {
         element.removeChild(element.firstChild);
     }
+}
+
+// Create output after calculating 
+function setOutput(outputCtrl) {
+    var transfer = pidgyCalculator.getTransferFirst(),
+        evolved = pidgyCalculator.getEvolved(),
+        candy = pidgyCalculator.getCandyLeft(),
+        transferFirst = document.getElementById('chkTransfer').checked;
+
+    // display pidgies to transfer before starting, if any
+    var txtOutput = "Before starting, transfer ";
+    if (transfer > 0) {
+        txtOutput += transfer + (transfer > 1 ? " pidgies." : " pidgy.");
+        outputCtrl.appendChild(createLi(txtOutput));
+    }
+
+    // display number of pidgies to evolve
+    if (evolved < 1) {
+        txtOutput = "No pidgies can be evolved.";
+    } else {
+        txtOutput = "Evolve " +
+            (transferFirst > 0 ? "and transfer " : "") +
+            evolved + (evolved > 1 ? " pidgies." : " pidgy.");
+    }
+    outputCtrl.appendChild(createLi(txtOutput));
+
+    // display remaining candies if any
+    if (candy >= 1) {
+        txtOutput = "You will have " +
+            candy +
+            (candy > 1 ? " candies left." : " candy left.");
+        outputCtrl.appendChild(createLi(txtOutput));
+    } 
+}
+
+function createLi(text) {
+    var li = document.createElement('li');
+    li.appendChild(document.createTextNode(text));
+    return li;
 }
