@@ -6,7 +6,7 @@ var pidgyCalculator = function() {
         evolvedCnt,
         evolutionCost = 12, // constant
 
-        reset = function() {
+        initialize = function() {
             pokemon = 0;
             candy = 0;
             transferBonus = 0;
@@ -15,7 +15,7 @@ var pidgyCalculator = function() {
         },
 
         calculate = function(pokemonCnt, candyCnt, transferAfter) {
-            reset();
+            initialize();
             pokemon = Number(pokemonCnt);
             candy = Number(candyCnt);
             transferBonus = transferAfter | 0; // cast bool as 0 or 1
@@ -24,28 +24,45 @@ var pidgyCalculator = function() {
             {
                 if (candy >= evolutionCost) {
                     evolve();
-                } else if (candy + pokemon > evolutionCost) {
-                    transfer();
                 } else {
-                    transferCnt += pokemon;
-                    candy += pokemon;
-                    pokemon = 0;
-                }
+                    transfer();
+                } 
             }
         },
 
         evolve = function() {
-            pokemon--;
-            // cost 12 for candy, but get 1 candy on evolve, 
-            // plus bonus if transferred
-            candy -= evolutionCost - 1 - transferBonus;
-            evolvedCnt++;
+            // Calc max evolution only if at least 1 possible
+            var maxEvolves = candy >= evolutionCost 
+                ? Math.floor(candy / (evolutionCost - 1)) 
+                : 0;
+
+            // Evolve max if any will remain
+            if (pokemon >= maxEvolves) {
+                pokemon -= maxEvolves;
+                candy -= (evolutionCost - 1 - transferBonus) * maxEvolves;
+                evolvedCnt += maxEvolves;
+            // Evolve all pokemon if none will remain
+            } else {
+                candy -= (evolutionCost - 1 - transferBonus) * pokemon;
+                evolvedCnt += pokemon;
+                pokemon = 0;
+            }
         },
 
         transfer = function() {
-            pokemon--;
-            transferCnt++;
-            candy++;
+            var candyNeeded = evolutionCost - candy;
+
+            // Transfer only as many as are needed
+            if (candyNeeded < pokemon) {
+                pokemon -= candyNeeded;
+                candy += candyNeeded;
+                transferCnt += candyNeeded;
+            // Transfer all if there won't be enough
+            } else {
+                candy += pokemon;
+                transferCnt += pokemon;
+                pokemon = 0;
+            }
         },
 
         getTransferFirst = function() { return transferCnt; },
