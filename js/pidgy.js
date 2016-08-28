@@ -56,7 +56,7 @@ var pidgyCalculator = function() {
 
         setOutput = function() {
             // display pidgies to transfer before starting if any
-            var txtOutput = "Before using your lucky egg, transfer ";
+            var txtOutput = "Before starting, transfer ";
             if (transferCnt > 0) {
                 txtOutput += transferCnt + (transferCnt > 1 ? " pidgies." : " pidgy.");
                 outputCtrl.appendChild(createLi(txtOutput));

@@ -88,9 +88,9 @@ p.checkbox-label {
     text-align: center;
 }
 
-ul {
+ol {
     font-size: 2rem;
-    list-style: none;
+    /*list-style: none;*/
 }
 
 .input-container {
