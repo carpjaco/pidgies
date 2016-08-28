@@ -8,11 +8,12 @@ window.onload = function () {
         .addEventListener('click', function(event) {
             event.preventDefault();
             var pidgies = document.getElementById('txtPidgies').value,
-                candies = document.getElementById('txtCandies').value;
+                candies = document.getElementById('txtCandies').value,
+                transfer = document.getElementById('chkTransfer').checked;
 
             clearUlChildren(outputElement);
             // Call calculator - forcing true for transfering pidgeotto
-            pidgyCalculator.calculate(pidgies, candies, true); 
+            pidgyCalculator.calculate(pidgies, candies, transfer); 
 
             // Call timer to make the ball spin
             setSpinTimer(this);

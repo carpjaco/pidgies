@@ -66,7 +66,9 @@ var pidgyCalculator = function() {
             if (evolvedCnt < 1) {
                 txtOutput = "No pidgies can be evolved.";
             } else {
-                txtOutput = "Evolve and transfer " + evolvedCnt + (evolvedCnt > 1 ? " pidgies." : " pidgy.");
+                txtOutput = "Evolve " + 
+                    (transferBonus > 0 ? "and transfer " : "") + 
+                    evolvedCnt + (evolvedCnt > 1 ? " pidgies." : " pidgy.");
             }
             outputCtrl.appendChild(createLi(txtOutput));
 

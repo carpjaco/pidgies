@@ -17,14 +17,25 @@
     <main>
         <form>
             <div class="input-container">
-                <label>Pidgies</label>
+                <label for="txtPidgies">Pidgies</label>
                 <input type="tel" id="txtPidgies" value="0" pattern=”[0-9]*/>
             </div>
             <div class="input-container">
-                <label>Candies</label>
+                <label for="txtCandies">Candies</label>
                 <input type="tel" id="txtCandies" value="0" pattern=”[0-9]*/>
             </div>
-
+            <p class="checkbox-label">Transfer after evolving?</p>
+            <div class="flipswitch-container">
+                <div class="flipswitch">
+                    <input type="checkbox" name="flipswitch" class="flipswitch-cb" id="chkTransfer" checked>
+                    <label class="flipswitch-label" for="chkTransfer">
+                        <div class="flipswitch-inner"></div>
+                        <div class="flipswitch-switch"></div>
+                    </label>
+                </div>
+            </div>
+            
+            
             <img src="img/pokeball.png" id="btnCalc" alt="Calculate" />
         </form>
         <ul id="pidgyOutput"></ul>
