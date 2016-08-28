@@ -18,6 +18,21 @@ window.onload = function () {
             // Call timer to make the ball spin
             setSpinTimer(this);
         });
+
+    // Clear text in input boxes when clicked on
+    var inputs = document.getElementsByTagName('input');
+
+    for (var i =0; i < inputs.length; i++) {
+        // On focus, empty input box
+        inputs[i].addEventListener('focus', function() {
+            this.value = "";
+        });
+
+        // When losing focus and it's empty, set it back to 0
+        inputs[i].addEventListener('blur', function() {
+            if (!this.value || this.value < 0) this.value = 0;
+        });
+    }
 }
 
 // Set CSS on image to spin and timer to turn CSS off
